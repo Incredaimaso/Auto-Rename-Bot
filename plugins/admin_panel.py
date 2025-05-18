@@ -47,7 +47,7 @@ async def tutorial(bot, message):
             ),
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton("⚡ Tutorial", url="https://t.me/AshuSupport")]]
+                [[InlineKeyboardButton("⚡ Tutorial", url="https://t.me/Piras_Official")]]
             ),
         )
     except Exception as e:

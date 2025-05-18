@@ -158,5 +158,19 @@ class Database:
             logging.error(f"Error getting metadata code for user {id}: {e}")
             return None
 
+    async def set_extract_source(self, id, source_type):
+        try:
+            await self.col.update_one({"_id": int(id)}, {"$set": {"extract_source": source_type}})
+        except Exception as e:
+            logging.error(f"Error setting extract source for user {id}: {e}")
+
+    async def get_extract_source(self, id):
+        try:
+            user = await self.col.find_one({"_id": int(id)})
+            return user.get("extract_source", "filename") if user else "filename"
+        except Exception as e:
+            logging.error(f"Error getting extract source for user {id}: {e}")
+            return "filename"
+
 
 AshutoshGoswami24 = Database(Config.DB_URL, Config.DB_NAME)
